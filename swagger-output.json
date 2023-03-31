@@ -1,0 +1,436 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/allbusiness": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "auth",
+            "in": "header",
+            "description": "auth",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/allcustomers": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "auth",
+            "in": "header",
+            "description": "auth",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/alladmins": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "auth",
+            "in": "header",
+            "description": "auth",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/addproduct": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "product",
+            "in": "body",
+            "description": "add product",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          {
+            "name": "auth",
+            "in": "header",
+            "description": "auth",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/myproducts": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "auth",
+            "in": "header",
+            "description": "auth",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getproducts": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "auth",
+            "in": "header",
+            "description": "auth",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getproduct/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth",
+            "in": "header",
+            "description": "auth",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/addtocart/{id}": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth",
+            "in": "header",
+            "description": "auth",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/cart": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "auth",
+            "in": "header",
+            "description": "auth",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getproducts/{category}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth",
+            "in": "header",
+            "description": "auth",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/signup": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "newUser",
+            "in": "body",
+            "description": "REGISTER",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "login",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            },
+            "description": "login"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/forgotpw": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "forgot",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                }
+              }
+            },
+            "description": "FORGOT"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/forgotpw/verifyotp": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "otp",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "otp": {
+                  "example": "any"
+                }
+              }
+            },
+            "description": "OTP"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/forgotpw/resetpw": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "reset",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "password": {
+                  "example": "any"
+                }
+              }
+            },
+            "description": "RESET"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "kajal"
+        },
+        "email": {
+          "type": "string",
+          "example": "sekhrika@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "87654"
+        },
+        "mobile": {
+          "type": "string",
+          "example": "765479"
+        },
+        "city": {
+          "type": "string",
+          "example": "ambala"
+        },
+        "country": {
+          "type": "string",
+          "example": "India"
+        },
+        "address": {
+          "type": "string",
+          "example": "400,sukhna path"
+        },
+        "role": {
+          "type": "string",
+          "example": "Customer/Admin/Business"
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "plain white t-shirt"
+        },
+        "price": {
+          "type": "string",
+          "example": "12"
+        },
+        "description": {
+          "type": "string",
+          "example": "comfy cotton wear suitable for summers"
+        },
+        "color": {
+          "type": "string",
+          "example": "white"
+        },
+        "reviews": {
+          "type": "string",
+          "example": "very cool"
+        },
+        "category": {
+          "type": "string",
+          "example": "t-shirts"
+        },
+        "addtocart": {
+          "type": "string",
+          "example": "yes"
+        },
+        "payment": {
+          "type": "string",
+          "example": "Card/Cash/Netbanking"
+        }
+      }
+    }
+  }
+}
